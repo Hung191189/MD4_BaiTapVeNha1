@@ -1,6 +1,11 @@
 package com.example.md4_baitapvenha1.configuration;
 
 
+import com.example.md4_baitapvenha1.formatter.CategoryFormatter;
+import com.example.md4_baitapvenha1.service.IBookService;
+import com.example.md4_baitapvenha1.service.ICategoryService;
+import com.example.md4_baitapvenha1.service.impl.BookServiceImpl;
+import com.example.md4_baitapvenha1.service.impl.CategoryService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -34,7 +39,7 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = "com.example.md4_baitapvenha1")
-@EnableJpaRepositories ("com.example.md4_baitapvenha1.repository")
+@EnableJpaRepositories("com.example.md4_baitapvenha1.repository")
 @EnableSpringDataWebSupport
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
 
@@ -71,6 +76,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
+
     //JPA
     @Bean
     @Qualifier(value = "entityManager")
@@ -114,4 +120,17 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return properties;
     }
 
+    @Bean
+    public ICategoryService categoryService() {
+        return new CategoryService();
+    }
+
+    @Bean
+    public IBookService bookService() {
+        return new BookServiceImpl();
+    }
+    @Override
+    public void addFormatters(FormatterRegistry registry){
+        registry.addFormatter(new CategoryFormatter(applicationContext.getBean(CategoryService.class)));
+    }
 }

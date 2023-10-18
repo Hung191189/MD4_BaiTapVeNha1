@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Book List</h3>
+<h3>Books List</h3>
 <table>
     <tr>
         <th>Id</th>
@@ -15,11 +15,16 @@
     <tr th:each="item:${book}">
         <th th:text="${item.getIdBook()}"></th>
         <th th:text="${item.getName()}"></th>
-        <th th:text="${item.getCategory()}"></th>
+        <th th:text="${item.category.getName()}"></th>
+        <th><a th:href="@{/books/delete/{id}(id=${item.getIdBook()})}">Delete</a> </th>
+        <th><a th:href="@{/books/update/{id}(id=${item.getIdBook()})}">Edit</a></th>
     </tr>
 </table>
 <span>
     <a th:href="@{/books/create}">Create new book</a>
+</span>
+<span>
+    <a th:href="@{/category}">Category</a>
 </span>
 </body>
 </html>

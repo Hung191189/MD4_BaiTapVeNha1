@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
 <form method="post">
-  <div class="form-group">
-    <label for="formGroupExampleInput">Book Name</label>
-    <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="Name">
-  </div>
-  <div class="form-group">
-    <label>Category</label>
-    <select name="Category">
-      <option th:each="item:${category}" th:value="${item.getIdCategory()}" th:text="${item.name}"></option>
-    </select>
-  </div>
-  <input type="submit" value="Create">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Category Name</label>
+        <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="Name">
+    </div>
+    <input type="submit" value="Create">
 </form>
 </body>
 </html>
