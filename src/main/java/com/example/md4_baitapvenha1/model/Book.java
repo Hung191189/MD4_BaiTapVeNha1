@@ -44,4 +44,13 @@ public class Book {
     public Long getIdBook() {
         return idBook;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "idBook=" + idBook +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                '}';
+    }
 }

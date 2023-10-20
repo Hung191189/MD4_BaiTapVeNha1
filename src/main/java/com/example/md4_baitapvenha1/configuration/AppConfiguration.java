@@ -133,4 +133,5 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public void addFormatters(FormatterRegistry registry){
         registry.addFormatter(new CategoryFormatter(applicationContext.getBean(CategoryService.class)));
     }
+
 }
